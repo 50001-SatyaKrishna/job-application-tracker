@@ -1,0 +1,6 @@
+{
+  "name": "JobTracker",
+  "description": "A clean, modern productivity application for tracking job applications with spreadsheet-style inline editing, status pipelines, and FastAPI backend integration.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

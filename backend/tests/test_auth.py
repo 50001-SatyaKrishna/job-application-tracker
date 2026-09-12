@@ -39,6 +39,35 @@ def test_login_user():
     assert "access_token" in data
     assert data["token_type"] == "bearer"
 
+
+def test_duplicate_names_are_allowed():
+    first_name = f"pytest_user_{uuid4().hex[:8]}"
+    second_name = first_name
+    first_email = f"{uuid4().hex[:8]}@gmail.com"
+    second_email = f"{uuid4().hex[:8]}@gmail.com"
+    password = "TestPassword123"
+
+    first_response = client.post(
+        "/users/",
+        json={
+            "name": first_name,
+            "email": first_email,
+            "password": password
+        }
+    )
+
+    second_response = client.post(
+        "/users/",
+        json={
+            "name": second_name,
+            "email": second_email,
+            "password": password
+        }
+    )
+
+    assert first_response.status_code == 200
+    assert second_response.status_code == 200
+
 def test_login_with_wrong_password():
     email = f"pytest_{uuid4().hex}@gmail.com"
     password = "TestPassword123"
