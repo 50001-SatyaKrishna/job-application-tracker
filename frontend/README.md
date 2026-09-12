@@ -1,20 +1,72 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://ai.google.dev/static/site-assets/images/share-ais-513315318.png" />
-</div>
+# Frontend
 
-# Run and deploy your AI Studio app
+This is the React + TypeScript frontend for the Job Application Tracker. It handles the dashboard UI, job table editing, authentication screens, charts, and currency settings.
 
-This contains everything you need to run your app locally.
+## Tech stack
 
-View your app in AI Studio: https://ai.studio/apps/dfea9b67-4326-4715-92f4-ef02c8b66570
+- React
+- TypeScript
+- Vite
+- Tailwind CSS
+- Recharts
+- Lucide icons
 
-## Run Locally
+## Prerequisites
 
-**Prerequisites:**  Node.js
+- Node.js 18 or newer
+- npm
 
+## Install dependencies
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+```bash
+npm install
+```
+
+## Run locally
+
+```bash
+npm run dev
+```
+
+The app runs on:
+
+- http://localhost:3000
+
+## Production build
+
+```bash
+npm run build
+```
+
+## Type check
+
+```bash
+npm run lint
+```
+
+## Environment
+
+This project does not require a Gemini API key for normal app usage. If you are working with a custom environment setup, you can copy the sample env file and adjust values if needed:
+
+```bash
+cp .env.example .env
+```
+
+If you are using the backend locally, make sure the frontend points to the correct API URL in your environment configuration.
+
+## Project structure
+
+```text
+src/
+  components/
+  context/
+  services/
+  utils/
+  App.tsx
+  main.tsx
+```
+
+## Notes
+
+This frontend is designed to work with the FastAPI backend in the `backend/` folder. Start the backend first if you want to connect to live job data and authentication.
+
