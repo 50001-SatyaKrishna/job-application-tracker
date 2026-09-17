@@ -5,7 +5,7 @@ from app.routers import jobs, user,auth
 
 app = FastAPI()
 
-origins = ["https://www.google.com","http://localhost:3000", "http://localhost:5173", "http://localhost:8000", "http://localhost:8080", "http://localhost:8001", "http://localhost:3001"]
+origins = ["https://www.google.com","http://localhost:3000","https://job-application-tracker-frontend.onrender.com", "http://localhost:5173", "http://localhost:8000", "http://localhost:8080", "http://localhost:8001", "http://localhost:3001"]
 
 app.add_middleware(
     CORSMiddleware,
