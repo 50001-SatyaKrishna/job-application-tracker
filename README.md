@@ -84,7 +84,6 @@ Each job application can store information including:
 
 The application follows a client-server architecture:
 
-```text
                          ┌─────────────────────┐
                          │       React         │
                          │    TypeScript UI    │
@@ -120,7 +119,7 @@ The application follows a client-server architecture:
 
 ## Project Structure
 
-```text
+
 Job Application Tracker/
 ├── .github/
 │   └── workflows/
@@ -164,7 +163,7 @@ The application uses JWT (JSON Web Token) based authentication to protect user-s
 
 ### Authentication Flow
 
-```text
+
 User
  │
  │  Email + Password
@@ -189,6 +188,7 @@ get_current_user()
  │  Decode & validate token
  ▼
 Authenticated User
+
 
 ## Database & Migrations
 
@@ -221,7 +221,7 @@ Database changes are tracked through versioned migration files rather than manua
 
 The backend container automatically runs pending migrations when it starts:
 
-```bash
+
 python -m alembic upgrade head
 
 ## Docker
@@ -240,7 +240,7 @@ Docker Compose connects these services so they can communicate within the same D
 
 Clone the repository:
 
-```bash
+
 git clone https://github.com/50001-SatyaKrishna/job-application-tracker.git
 cd job-application-tracker
 
@@ -261,7 +261,7 @@ The test suite covers:
 
 Run the tests locally from the `backend` directory:
 
-```bash
+
 pytest
 
 ## Deployment
