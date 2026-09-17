@@ -96,6 +96,8 @@ export const normalizeJob = (raw: any): Job => {
   const id = raw.id ?? raw._id ?? Math.random().toString(36).substring(2, 9);
   const job_title = raw.job_title ?? raw.title ?? raw.position ?? 'Untitled Position';
   const company = raw.company ?? raw.company_name ?? 'Unknown Company';
+  const company_name = raw.company_name ?? raw.company ?? company;
+  const job_url = raw.job_url ?? raw.url ?? raw.jobUrl ?? '';
   const location = raw.location ?? raw.city ?? 'Remote / Unspecified';
   
   let applied_date = raw.applied_date ?? raw.created_at ?? new Date().toISOString().split('T')[0];
@@ -147,6 +149,8 @@ export const normalizeJob = (raw: any): Job => {
     id,
     job_title,
     company,
+    company_name,
+    job_url,
     location,
     applied_date,
     salary: isNaN(salary as number) ? null : salary,
@@ -272,7 +276,9 @@ export const api = {
   createJob: async (job: Partial<Job>): Promise<Job> => {
     const payload = {
       job_title: job.job_title,
-      company: job.company,
+      company_name: job.company_name || job.company || '',
+      company: job.company || job.company_name || '',
+      job_url: job.job_url || '',
       location: job.location || '',
       applied_date: job.applied_date || new Date().toISOString().split('T')[0],
       salary: job.salary !== null && job.salary !== undefined ? Number(job.salary) : null,

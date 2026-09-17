@@ -21,7 +21,8 @@ export const AddJobModal: React.FC<AddJobModalProps> = ({
   const today = new Date().toISOString().split('T')[0];
 
   const [jobTitle, setJobTitle] = useState('');
-  const [company, setCompany] = useState('');
+  const [companyName, setCompanyName] = useState('');
+  const [jobUrl, setJobUrl] = useState('');
   const [location, setLocation] = useState('');
   const [appliedDate, setAppliedDate] = useState(today);
   const [salary, setSalary] = useState('');
@@ -47,8 +48,12 @@ export const AddJobModal: React.FC<AddJobModalProps> = ({
       setError('Please enter a Job Title.');
       return;
     }
-    if (!company.trim()) {
+    if (!companyName.trim()) {
       setError('Please enter the Company name.');
+      return;
+    }
+    if (!jobUrl.trim()) {
+      setError('Please enter the job posting URL.');
       return;
     }
 
@@ -56,7 +61,9 @@ export const AddJobModal: React.FC<AddJobModalProps> = ({
       setIsSubmitting(true);
       await onSubmit({
         job_title: jobTitle.trim(),
-        company: company.trim(),
+        company: companyName.trim(),
+        company_name: companyName.trim(),
+        job_url: jobUrl.trim(),
         location: location.trim(),
         applied_date: appliedDate,
         salary: salary ? Number(salary) : null,
@@ -68,7 +75,8 @@ export const AddJobModal: React.FC<AddJobModalProps> = ({
       });
       // Reset form on success
       setJobTitle('');
-      setCompany('');
+      setCompanyName('');
+      setJobUrl('');
       setLocation('');
       setAppliedDate(today);
       setSalary('');
@@ -140,8 +148,23 @@ export const AddJobModal: React.FC<AddJobModalProps> = ({
                 type="text"
                 required
                 placeholder="e.g. Acme Corp"
-                value={company}
-                onChange={(e) => setCompany(e.target.value)}
+                value={companyName}
+                onChange={(e) => setCompanyName(e.target.value)}
+                className="w-full px-3 py-2 text-sm bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-slate-800 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-100 dark:focus:ring-blue-950 transition-all"
+              />
+            </div>
+
+            {/* Job URL */}
+            <div>
+              <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">
+                Job URL <span className="text-rose-500">*</span>
+              </label>
+              <input
+                type="url"
+                required
+                placeholder="https://company.com/jobs/123"
+                value={jobUrl}
+                onChange={(e) => setJobUrl(e.target.value)}
                 className="w-full px-3 py-2 text-sm bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-slate-800 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-100 dark:focus:ring-blue-950 transition-all"
               />
             </div>

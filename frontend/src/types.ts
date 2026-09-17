@@ -12,6 +12,8 @@ export interface Job {
   id: string | number;
   job_title: string;
   company: string;
+  company_name?: string;
+  job_url?: string;
   location: string;
   applied_date: string;
   salary: number | null;

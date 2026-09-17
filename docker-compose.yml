@@ -1,0 +1,42 @@
+services:
+
+  db:
+    image: postgres:17
+    container_name: job_tracker_db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: job_tracker
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  backend:
+    build: ./backend
+    container_name: job_tracker_backend
+    ports:
+      - "8000:8000"
+    environment:
+      database_hostname: db
+      database_port: 5432
+      database_username: postgres
+      database_password: postgres
+      database_name: job_tracker
+      sqlalchemy_database_url: postgresql+psycopg2://postgres:postgres@db:5432/job_tracker
+      secret_key: change_this_later
+      algorithm: HS256
+      access_token_expire_minutes: 60
+    depends_on:
+      - db
+
+  frontend:
+    build: ./frontend
+    container_name: job_tracker_frontend
+    ports:
+      - "5173:3000"
+    depends_on:
+      - backend
+
+volumes:
+  postgres_data:

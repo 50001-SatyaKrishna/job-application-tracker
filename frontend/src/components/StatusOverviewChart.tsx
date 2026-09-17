@@ -208,10 +208,11 @@ export const StatusOverviewChart: React.FC<StatusOverviewChartProps> = ({
                   dataKey="count"
                   radius={[6, 6, 0, 0]}
                   maxBarSize={48}
-                  onClick={(entry) => {
-                    if (entry && entry.status) {
+                  onClick={(entry: any) => {
+                    const status = entry?.status || entry?.payload?.status;
+                    if (status) {
                       onSelectStatus(
-                        activeStatusFilter === entry.status ? 'All' : entry.status
+                        activeStatusFilter === status ? 'All' : status
                       );
                     }
                   }}
