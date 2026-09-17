@@ -119,7 +119,7 @@ The application follows a client-server architecture:
 
 ## Project Structure
 
-
+```text
 Job Application Tracker/
 ├── .github/
 │   └── workflows/
@@ -156,6 +156,7 @@ Job Application Tracker/
 │   └── index.html
 ├── docker-compose.yml
 └── .gitignore
+```
 
 ## Authentication & Security
 
@@ -163,7 +164,7 @@ The application uses JWT (JSON Web Token) based authentication to protect user-s
 
 ### Authentication Flow
 
-
+```text
 User
  │
  │  Email + Password
@@ -188,7 +189,7 @@ get_current_user()
  │  Decode & validate token
  ▼
 Authenticated User
-
+```
 
 ## Database & Migrations
 
