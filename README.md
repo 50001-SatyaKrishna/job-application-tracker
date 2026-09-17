@@ -312,18 +312,18 @@ The application is deployed and available online.
 
 ### Login
 
-![Login_page](image.png)
+![Login_page](./screenshots/image.png)
 
 
 ### Job Dashboard
 
-![Job_Dashboard](image-1.png)
+![Job_Dashboard](./screenshots/image-1.png)
 
 
 ### Add Job Application
 
-![Job_application](image-2.png)
+![Job_application](./screenshots/image-2.png)
 
 
 ### Edit Job Application
-![edit_job](image-3.png)
+![edit_job](./screenshots/image-3.png)
